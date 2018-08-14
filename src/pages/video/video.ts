@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { IonicPage, NavController, NavParams ,LoadingController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams , LoadingController, AlertController } from 'ionic-angular';
 import { MediaCapture, MediaFile , CaptureError} from '@ionic-native/media-capture';
 import { File } from '@ionic-native/file';
 import firebase from 'firebase';
@@ -65,6 +65,8 @@ export class VideoPage {
       let loading = this.loadingCtrl.create({
         content: 'Uploading file, Please wait...'
       });
+    
+      loading.present();
 
       var directory: string = this.fileUri.substring(0, this.fileUri.lastIndexOf('/')+1);
       directory = directory.split('%20').join(' ');
@@ -86,7 +88,6 @@ export class VideoPage {
       return storageRef.put(blob).then(
           (snapshot:any) => {
               console.log(snapshot.Q);
-              let  files = [];
               storageRef.getDownloadURL().then((url) => {
                   this.downloadUrl = url;
                   this.db.push({downloadUrl: url}); //upload url to url db

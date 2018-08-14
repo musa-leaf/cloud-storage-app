@@ -45,6 +45,8 @@ export class PicturesPage {
         });
         this.pictures.reverse();
       });
+      console.log(this.pictures);
+      
     }
 
     takePicture(){
@@ -89,7 +91,6 @@ export class PicturesPage {
       return storageRef.put(blob).then(
           (snapshot:any) => {
               console.log(snapshot.Q);
-              let  files = [];
               storageRef.getDownloadURL().then((url) => {
                   this.downloadUrl = url;
                   this.db.push({downloadUrl: url}); //upload url to url db

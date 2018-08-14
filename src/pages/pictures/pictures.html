@@ -17,7 +17,7 @@
 
   <div class="card-background-page" *ngIf = "pictures != null">
       <ion-card *ngFor = "let picture of pictures">
-        <img src="{{video.downloadUrl}}"/>
+        <img src="{{picture.downloadUrl}}"/>
       </ion-card>
   </div>
   <ion-fab bottom right>
