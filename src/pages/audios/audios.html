@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar color = "primary">
+    <ion-title>Audios</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list  *ngIf = "audios != null">
+    <ion-item *ngFor = "let audio of audios">
+      <audio controls>
+        <source  src="{{audio.downloadUrl}}" type="audio/ogg">
+        <source src="{{audio.downloadUrl}}" type="audio/mpeg">
+      </audio>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-fab bottom right>
+    <button ion-fab (click) = "record();">
+      <ion-icon name = "add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

@@ -1,3 +1,54 @@
-page-home {
+.bt{
+    width: 100%;
+    height: calc(100vh / 3);
+    text-align: center;
+    line-height: calc(70vh / 2);
+    font-size: 4rem;
+    letter-spacing: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+   
+}
 
+#pic{
+    background: url(/../assets/imgs/c.jpg) center center ;
+    background-size: cover;
+
+   
+}
+
+#pic::after{
+    content: 'pictures';
+    background: rgba(0, 0, 0, 0.5);
+    display: block;
+    width: 100%;
+    height: calc(100vh / 3);
+}
+
+#vid{
+    background: url(/../assets/imgs/v.jpg) center center ;
+    background-size: cover;
+}
+
+#vid::after{
+    content: 'vidoes';
+    background: rgba(0, 0, 0, 0.5);
+    display: block;
+    width: 100%;
+    height: calc(100vh / 3);
+}
+
+
+#aud{
+    background: url(/../assets/imgs/m.jpg) center center ;
+    background-size: cover;
+}
+
+#aud::after{
+    content: 'audios';
+    background: rgba(0, 0, 0, 0.5);
+    display: block;
+    width: 100%;
+    height: calc(100vh / 3);
 }

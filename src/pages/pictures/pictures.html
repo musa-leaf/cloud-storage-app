@@ -1,0 +1,28 @@
+<!--
+  Generated template for the PicturesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color = "primary">
+    <ion-title>Pictures</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div class="card-background-page" *ngIf = "pictures != null">
+      <ion-card *ngFor = "let picture of pictures">
+        <img src="{{video.downloadUrl}}"/>
+      </ion-card>
+  </div>
+  <ion-fab bottom right>
+    <button ion-fab (click) = "takePicture();">
+      <ion-icon name = "add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

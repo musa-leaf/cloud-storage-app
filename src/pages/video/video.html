@@ -1,0 +1,23 @@
+<ion-header>
+
+  <ion-navbar color = "primary">
+    <ion-title>Videos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding >
+  <div *ngIf = "videos != null">
+    <video *ngFor = "let video of videos" width="320" height="240" controls>
+      <source src="{{video.downloadUrl}}" type="video/mp4">
+      <source src="movie.ogg" type="video/ogg">
+    Your browser does not support the video tag.
+    </video>
+  </div>
+  <ion-fab bottom right>
+    <button ion-fab (click) = "takeVideo();">
+      <ion-icon name = "add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>
