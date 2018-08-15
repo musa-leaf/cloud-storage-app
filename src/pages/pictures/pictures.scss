@@ -3,5 +3,16 @@
     ion-card {
       position: relative;
       text-align: center;
-    }  
+      background: rgba(0,0,0,.5);
+      color: white !important;
+    } 
+
+    .card-title{
+      padding: 5px 0;
+     
+    }
+
+    .card-subtitle{
+      padding: 2px 0;
+    }
   }

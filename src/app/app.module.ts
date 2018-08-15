@@ -7,6 +7,11 @@ import { MediaCapture } from '@ionic-native/media-capture';
 import { MyApp } from './app.component';
 import { File } from '@ionic-native/file';
 import firebase from 'firebase';
+import { config } from '../config.module';
+import { VideoPlayer } from "@ionic-native/video-player";
+import { StreamingMedia } from "@ionic-native/streaming-media";
+
+firebase.initializeApp(config);
 
 @NgModule({
   declarations: [
@@ -26,7 +31,9 @@ import firebase from 'firebase';
     StatusBar,
     SplashScreen,
     MediaCapture,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    VideoPlayer,
+    StreamingMedia
   ]
 })
 export class AppModule {}

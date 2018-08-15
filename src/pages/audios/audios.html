@@ -7,16 +7,19 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-list  *ngIf = "audios != null">
-    <ion-item *ngFor = "let audio of audios">
-      <audio controls>
-        <source  src="{{audio.downloadUrl}}" type="audio/ogg">
-        <source src="{{audio.downloadUrl}}" type="audio/mpeg">
-      </audio>
-    </ion-item>
-
-  </ion-list>
+<ion-content padding id = "bg"> 
+  <div  *ngIf = "audios != null">
+    <div class = "track" *ngFor = "let audio of audios">
+      <ion-label>
+        <div class="marquee">
+            {{audio.fileName}} &#160;&#160;&#160;{{audio.size  | number : '2.0-0'}}kb
+        </div>
+      </ion-label>
+      <button ion-button icon-only (click)="play(audio.downloadUrl);">
+        <ion-icon name = "play"></ion-icon>
+      </button> 
+    </div>
+  </div>
 
   <ion-fab bottom right>
     <button ion-fab (click) = "record();">

@@ -1,0 +1,41 @@
+#bg{
+    background: linear-gradient( #1d0712, #01071a);
+}
+.track{
+    height: 45px;
+    background: rgba(0,0,0,.3);
+    margin: 2px 0;
+    ion-label{
+        display: block;
+        float: left;
+        color : white;
+        line-height: 45px;
+        height: 45px;
+        margin: 0;
+        padding: 0 10px;
+        width: calc(100% - 45px);
+        padding-left: 10px;
+    }
+
+    button{
+        float: right;
+        padding: 0;
+        margin: 0;
+        height: 45px;
+        width: 45px;
+        box-shadow: none;
+        border-radius: 0 !important;
+    }
+
+    .marquee{
+        //animation: marquee 10s linear infinite;
+    }
+
+    @keyframes marquee {
+        0%{
+            opacity: 1;
+        }
+        85%   { transform: translate(-100%, 0); opacity: 1; }
+        86% { opacity: 0; }
+    }
+}

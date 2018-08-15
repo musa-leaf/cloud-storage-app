@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import firebase from 'firebase';
-import { config } from '../../config.module';
 
 
 @IonicPage()
@@ -12,7 +10,7 @@ import { config } from '../../config.module';
 export class HomePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    firebase.initializeApp(config);
+    
   }
 
   ionViewDidLoad() {

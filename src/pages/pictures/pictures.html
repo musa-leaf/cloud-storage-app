@@ -13,11 +13,13 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding id = "bg">
 
   <div class="card-background-page" *ngIf = "pictures != null">
       <ion-card *ngFor = "let picture of pictures">
         <img src="{{picture.downloadUrl}}"/>
+        <div class="card-title">{{picture.fileName}}</div>
+        <div class="card-subtitle">{{picture.size}}kb</div>
       </ion-card>
   </div>
   <ion-fab bottom right>

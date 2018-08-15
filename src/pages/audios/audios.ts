@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams , AlertController, LoadingControlle
 import { MediaCapture, MediaFile , CaptureError} from '@ionic-native/media-capture';
 import { File } from '@ionic-native/file';
 import firebase from 'firebase';
-
+import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
 
 @IonicPage()
 @Component({
@@ -18,13 +18,16 @@ export class AudiosPage {
   fileUri: any;
   fileType: any;
   downloadUrl : any;
+  fileSize : any;
+
   
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private mediaCapture: MediaCapture,
     private file : File,
     private alertCtrl: AlertController,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    private streamingMedia : StreamingMedia
     ){
 
       this.db = firebase.database().ref('/files/audios/');
@@ -52,10 +55,14 @@ export class AudiosPage {
             this.fileUri = mediaFile[0].fullPath;
             this.fileName = this.fileUri.substring(this.fileUri.lastIndexOf('/') + 1, this.fileUri.length);
             this.fileType = mediaFile[0].type;
+            this.fileSize = mediaFile[0].size / 1000;
+            console.log(mediaFile[0]);
             this.presentConfirm();
         },
         (err: CaptureError) => console.error(err)
     );
+    console.log(this.audios);
+    
   }
 
   convertandUpload(){
@@ -90,7 +97,7 @@ export class AudiosPage {
             console.log(snapshot.Q);
             storageRef.getDownloadURL().then((url) => {
                 this.downloadUrl = url;
-                this.db.push({downloadUrl: url}); //upload url to url db
+                this.db.push({downloadUrl: url, fileName : this.fileName, size : this.fileSize}); //upload url to url db
                 loading.dismiss();
                 this.loadData();
                 return this.downloadUrl;
@@ -126,4 +133,14 @@ export class AudiosPage {
     alert.present();
   }
 
+  play(url){
+    let options: StreamingVideoOptions = {
+    
+      successCallback: () => { console.log('Video played') },
+      errorCallback: (e) => { console.log('Error streaming') },
+      
+    };
+    
+    this.streamingMedia.playAudio(url, options);
+  }
 }

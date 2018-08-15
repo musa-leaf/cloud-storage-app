@@ -18,7 +18,7 @@ export class PicturesPage {
   fileUri: any;
   fileType: any;
   downloadUrl : any;
-  
+  fileSize : any;
   
 
   constructor(public navCtrl: NavController,
@@ -56,6 +56,7 @@ export class PicturesPage {
               this.fileUri = mediaFile[0].fullPath;
               this.fileName = this.fileUri.substring(this.fileUri.lastIndexOf('/') + 1, this.fileUri.length);
               this.fileType = mediaFile[0].type;
+              this.fileSize = mediaFile[0].size / 1000;
               this.presentConfirm();
           },
           (err: CaptureError) => console.error(err)
@@ -93,7 +94,7 @@ export class PicturesPage {
               console.log(snapshot.Q);
               storageRef.getDownloadURL().then((url) => {
                   this.downloadUrl = url;
-                  this.db.push({downloadUrl: url}); //upload url to url db
+                  this.db.push({downloadUrl: url, fileName : this.fileName, size : this.fileSize}); //upload url to url db
                   loading.dismiss();
                   this.loadData();
                   return this.downloadUrl;
