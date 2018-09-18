@@ -108,6 +108,9 @@ export class PicturesPage {
     }
 
     presentConfirm() {
+
+      
+
       let alert = this.alertCtrl.create({
         title: 'sync cloud',
         message: 'Do you want to save this file to the cloud?',
@@ -123,6 +126,7 @@ export class PicturesPage {
             text: 'Save',
             handler: () => {
               console.log("save clicked");
+
               this.convertandUpload();
             }
           }
